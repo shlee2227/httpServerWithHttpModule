@@ -1,7 +1,7 @@
 const http = require("http");
 const express = require("express");
 const { sendProducts } = require("./sendProducts");
-const { createUser, createPost } = require("./user");
+const { createUser, createPost, viewPostList } = require("./user");
 
 const app = express();
 app.use(express.json());
@@ -16,6 +16,7 @@ app.post("/login", (req, res) => {
 });
 app.get("/products", sendProducts);
 app.post("/posts", createPost);
+app.get("/viewposts", viewPostList);
 
 const server = http.createServer(app);
 

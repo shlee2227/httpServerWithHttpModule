@@ -1,5 +1,3 @@
-// user.js
-
 const users = [
   {
     id: 1,
@@ -53,4 +51,26 @@ const createPost = (req, res) => {
   res.json({ message: "post_Created" });
 };
 
-module.exports = { createUser, createPost };
+const viewPostList = (req, res) => {
+  const data = [];
+
+  for (i = 0; i < posts.length; i++) {
+    const detectedUserId = posts[i].userId;
+    const detectedPostingId = posts[i].id;
+
+    const userIndex = users.findIndex((obj) => obj.id === detectedUserId);
+    const postIndex = posts.findIndex((obj) => obj.id === detectedPostingId);
+
+    data.push({
+      userID: users[userIndex].id,
+      userName: users[userIndex].name,
+      postingId: posts[postIndex].id,
+      postingTitle: posts[postIndex].title,
+      postingContent: posts[postIndex].content,
+    });
+  }
+
+  res.json({ data });
+};
+
+module.exports = { createUser, createPost, viewPostList };
