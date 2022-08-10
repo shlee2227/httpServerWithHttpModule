@@ -1,6 +1,5 @@
 const sendProducts = (req, res) => {
   res.json({
-
     products: [
       {
         id: 1,
@@ -16,4 +15,4 @@ const sendProducts = (req, res) => {
   });
 };
 
-module.exports = { sendProducts }; 
+module.exports = { sendProducts };
